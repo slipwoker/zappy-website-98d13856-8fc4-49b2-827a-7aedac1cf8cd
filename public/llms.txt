@@ -40,7 +40,10 @@ Information about WCAG compliance and accessibility features.
 
 ## How to Contact Us
 
-- (No contact details configured yet.)
+- Email: shmuelhendler@gmail.com
+- Phone: 0522253838
+- Phone (tel): tel:0522253838
+- Address: אבן גבירול 46, תל אביב, ישראל
 
 ### Contact form
 - URL: https://example.com/contact
