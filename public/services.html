@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>כל מה שצריך כדי להשקיע נכון ביוון — שמואל הנדלר יועץ ומלווה משקיעים בחו&quot;ל</title>
+    <meta name="description" content="מאיתור הנכס המושלם ועד לחתימת החוזה — שירותי ייעוץ נדל&quot;ן מקיפים שמכסים כל שלב בתהליך. גלו כיצד אנו הופכים השקעה בחו&quot;ל לפשוטה, בטוחה ומשתלמת עבורכם.">
+    <meta name="keywords" content="שירותי ייעוץ נדל"ן, ליווי משקיעים בחו"ל, רכישת דירה ביוון, יועץ פיננסי נדל"ן, תהליך השקעה בנדל"ן">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Zappy Analytics -->
+<script>
+(function() {
+  'use strict';
+  
+  // Configuration
+  var config = {
+    websiteId: '98d13856-8fc4-49b2-827a-7aedac1cf8cd',
+    apiUrl: 'https://api.zappy5.com/api/analytics/track',
+    sessionDuration: 30 * 60 * 1000, // 30 minutes
+    visitorDuration: 30 * 24 * 60 * 60 * 1000, // 30 days
+    trackPageViews: true,
+    trackClicks: true,
+    trackFormSubmissions: true
+  };
+  
+  // Generate or retrieve persistent visitor ID (30 days)
+  function getVisitorId() {
+    var visitorKey = 'zappy_visitor_' + config.websiteId;
+    var visitor = null;
+    
+    try {
+      visitor = localStorage.getItem(visitorKey);
+      if (visitor) {
+        var visitorData = JSON.parse(visitor);
+        var now = Date.now();
+        
+        // Check if visitor ID is still valid (30 days)
+        if (now - visitorData.created < config.visitorDuration) {
+          // Update last seen timestamp
+          visitorData.lastSeen = now;
+          localStorage.setItem(visitorKey, JSON.stringify(visitorData));
+          return visitorData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: LocalStorage not available');
+    }
+    
+    // Generate new visitor ID
+    var newVisitorId = 'zv_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      localStorage.setItem(visitorKey, JSON.stringify({
+        id: newVisitorId,
+        created: Date.now(),
+        lastSeen: Date.now()
+      }));
+    } catch (e) {
+      // Continue without local storage
+    }
+    
+    return newVisitorId;
+  }
+  
+  // Generate or retrieve session ID (30 minutes)
+  function getSessionId() {
+    var sessionKey = 'zappy_session_' + config.websiteId;
+    var session = null;
+    
+    try {
+      session = sessionStorage.getItem(sessionKey);
+      if (session) {
+        var sessionData = JSON.parse(session);
+        var now = Date.now();
+        
+        // Check if session is still valid
+        if (now - sessionData.timestamp < config.sessionDuration) {
+          // Update timestamp
+          sessionData.timestamp = now;
+          sessionStorage.setItem(sessionKey, JSON.stringify(sessionData));
+          return sessionData.id;
+        }
+      }
+    } catch (e) {
+      console.warn('Zappy Analytics: SessionStorage not available');
+    }
+    
+    // Generate new session ID
+    var newSessionId = 'zs_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    
+    try {
+      sessionStorage.setItem(sessionKey, JSON.stringify({
+        id: newSessionId,
+        timestamp: Date.now()
+      }));
+    } catch (e) {
+      // Continue without session storage
+    }
+    
+    return newSessionId;
+  }
+  
+  var visitorId = getVisitorId();
+  var sessionId = getSessionId();
+  
+  // Track an event
+  function trackEvent(eventType, data) {
+    data = data || {};
+    
+    var eventData = {
+      website_id: config.websiteId,
+      event_type: eventType,
+      page_path: window.location.pathname,
+      referrer: document.referrer || 'direct',
+      visitor_id: visitorId,
+      session_id: sessionId,
+      metadata: data
+    };
+    
+    // Use sendBeacon if available (better for page unload events)
+    if (navigator.sendBeacon) {
+      var blob = new Blob([JSON.stringify(eventData)], { type: 'application/json' });
+      navigator.sendBeacon(config.apiUrl, blob);
+    } else {
+      // Fallback to fetch
+      fetch(config.apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(eventData),
+        keepalive: true
+      }).catch(function(error) {
+        console.warn('Zappy Analytics: Failed to track event', error);
+      });
+    }
+  }
+  
+  // Track page view
+  if (config.trackPageViews) {
+    trackEvent('pageview', {
+      title: document.title,
+      url: window.location.href
+    });
+  }
+  
+  // Track clicks on important elements
+  if (config.trackClicks) {
+    document.addEventListener('click', function(e) {
+      var target = e.target;
+      
+      // Track button clicks (counted as actions)
+      if (target.tagName === 'BUTTON' || target.closest('button')) {
+        var button = target.tagName === 'BUTTON' ? target : target.closest('button');
+        trackEvent('click', {
+          element: 'button',
+          text: button.textContent.trim().substring(0, 100),
+          id: button.id || null,
+          class: button.className || null
+        });
+      }
+      
+      // Track link clicks (navigation - not counted as actions)
+      else if (target.tagName === 'A' || target.closest('a')) {
+        var link = target.tagName === 'A' ? target : target.closest('a');
+        trackEvent('navigation', {
+          element: 'link',
+          text: link.textContent.trim().substring(0, 100),
+          href: link.href,
+          external: link.hostname !== window.location.hostname
+        });
+      }
+    }, true);
+  }
+  
+  // Track form submissions
+  if (config.trackFormSubmissions) {
+    document.addEventListener('submit', function(e) {
+      var form = e.target;
+      
+      trackEvent('form_submit', {
+        form_id: form.id || null,
+        form_name: form.name || null,
+        form_action: form.action || null,
+        form_method: form.method || 'GET'
+      });
+    }, true);
+  }
+  
+  // Track time on page (send on page unload)
+  var pageLoadTime = Date.now();
+  
+  window.addEventListener('beforeunload', function() {
+    var timeOnPage = Math.floor((Date.now() - pageLoadTime) / 1000); // in seconds
+    
+    trackEvent('page_unload', {
+      time_on_page: timeOnPage,
+      page_path: window.location.pathname
+    });
+  });
+  
+  // Expose tracking function globally for custom events
+  window.zappyAnalytics = {
+    track: trackEvent,
+    getVisitorId: function() { return visitorId; },
+    getSessionId: function() { return sessionId; }
+  };
+  
+})();
+</script>
+<!-- End Zappy Analytics -->
+    <meta property="og:title" content="כל מה שצריך כדי להשקיע נכון ביוון — שמואל הנדלר יועץ ומלווה משקיעים בחו&quot;ל">
+    <meta property="og:description" content="מאיתור הנכס המושלם ועד לחתימת החוזה — שירותי ייעוץ נדל&quot;ן מקיפים שמכסים כל שלב בתהליך. גלו כיצד אנו הופכים השקעה בחו&quot;ל לפשוטה, בטוחה ומשתלמת עבורכם.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="כל מה שצריך כדי להשקיע נכון ביוון — שמואל הנדלר יועץ ומלווה משקיעים בחו&quot;ל">
+    <meta name="twitter:description" content="מאיתור הנכס המושלם ועד לחתימת החוזה — שירותי ייעוץ נדל&quot;ן מקיפים שמכסים כל שלב בתהליך. גלו כיצד אנו הופכים השקעה בחו&quot;ל לפשוטה, בטוחה ומשתלמת עבורכם.">
+    <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .skip-link { position: absolute; top: 0; left: 0; transform: translateY(-200%); padding: 12px 18px; background: var(--bg-dark, #1a1a1a); color: var(--text-light, #fff); font-weight: 600; border-radius: 0 0 8px 0; z-index: 10000; }
+    .skip-link:focus { transform: none; outline: 2px solid var(--ring, #fff); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--ring, currentColor); outline-offset: 3px; }
+  </style>
+
+
+  
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/assets/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon-512x512.png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <!-- Cookie Consent -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.css">
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-cookieconsent@3/dist/cookieconsent.umd.js"></script>
+    <!-- Mickidum Accessibility Toolbar -->
+    <script src="https://cdn.jsdelivr.net/gh/mickidum/acc_toolbar/acctoolbar/acctoolbar.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+
+    <style id="zappy-dropdown-submenu-styles">
+      /* ========== DESKTOP DROPDOWN SUBMENU STYLES ========== */
+      /* Base styles for dropdown submenus - parent must be positioned */
+      .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { position: relative; }
+      /* Submenu base - hidden by default */
+      .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { display: block !important; position: absolute !important; top: 100%; left: 0; min-width: 220px; background: white; border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.15); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 1000; list-style: none; pointer-events: none; }
+      /* CRITICAL: Desktop hover styles to show dropdown */
+      .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Submenu item styling */
+      .sub-menu li { list-style: none; margin: 0; padding: 0; }
+      .sub-menu a { display: block !important; padding: 10px 16px !important; color: var(--text-dark, #333) !important; font-weight: 500; text-decoration: none; white-space: nowrap; transition: background-color 0.2s; }
+      .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+      [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 10px !important; padding-right: 28px !important; }
+      .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+      .sub-menu a:hover { background-color: #f5f5f5; }
+      /* RTL (Hebrew/Arabic) dropdown positioning */
+      [dir="rtl"] .nav-menu .sub-menu, [dir="rtl"] nav .sub-menu, [dir="rtl"] .navbar .sub-menu, html[lang="he"] .nav-menu .sub-menu, html[lang="he"] nav .sub-menu, html[lang="he"] .navbar .sub-menu, html[lang="ar"] .nav-menu .sub-menu, html[lang="ar"] nav .sub-menu, html[lang="ar"] .navbar .sub-menu { left: auto !important; right: 0 !important; }
+      /* Hide empty dropdown menus (exclude catalog sub-menus that use <a> children instead of <li>) */
+      .sub-menu:empty, .sub-menu:not(:has(li:not(.zappy-hidden-menu-item))):not(:has(> a)), .sub-menu:not(:has(li)):not(:has(> a)) { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      /* Desktop: show submenu on Menu Group hover */
+      li:has(.menu-group-title):hover > .sub-menu { opacity: 1 !important; visibility: visible !important; transform: translateY(0) !important; pointer-events: auto !important; }
+      /* Menu Group title styling */
+      .nav-menu > li > .menu-group-title, #navMenu > li > .menu-group-title { display: inline-block; padding: 0.5rem 1rem; cursor: default; user-select: none; }
+      
+      /* ========== MOBILE SUBMENU STYLES ========== */
+      @media (max-width: 768px) {
+        .nav-menu .sub-menu, nav .sub-menu, .navbar .sub-menu, #navMenu .sub-menu { position: static !important; transform: none !important; box-shadow: none !important; background: transparent !important; max-height: 0; overflow: hidden; opacity: 0; visibility: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; padding: 0 !important; border-radius: 0 !important; }
+        .navbar .sub-menu.mobile-expanded, .nav-menu .sub-menu.mobile-expanded, #navMenu .sub-menu.mobile-expanded { max-height: none !important; overflow-y: visible !important; opacity: 1 !important; visibility: visible !important; padding: 8px 0 8px 16px !important; }
+        [dir="rtl"] .sub-menu.mobile-expanded, html[lang="he"] .sub-menu.mobile-expanded { padding: 8px 16px 8px 0 !important; }
+        /* Disable hover behavior on mobile */
+        .nav-menu li:hover > .sub-menu, nav li:hover > .sub-menu, .navbar li:hover > .sub-menu, #navMenu li:hover > .sub-menu { opacity: 0; visibility: hidden; pointer-events: none; }
+        .nav-menu li > .sub-menu.mobile-expanded, nav li > .sub-menu.mobile-expanded, .navbar li > .sub-menu.mobile-expanded, #navMenu li > .sub-menu.mobile-expanded { opacity: 1 !important; visibility: visible !important; pointer-events: auto !important; }
+        .nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu) { display: flex !important; flex-wrap: wrap !important; align-items: center !important; position: relative !important; min-height: 44px !important; }
+        .nav-menu li:has(.sub-menu) > a, nav li:has(.sub-menu) > a, .navbar li:has(.sub-menu) > a, #navMenu li:has(.sub-menu) > a { flex: 1 !important; min-width: 0 !important; }
+        .nav-menu li:has(.sub-menu) > .menu-group-title, nav li:has(.sub-menu) > .menu-group-title, .navbar li:has(.sub-menu) > .menu-group-title, #navMenu li:has(.sub-menu) > .menu-group-title { flex: 1 !important; min-width: 0 !important; padding: 0 !important; line-height: inherit !important; }
+        .nav-menu li:has(.sub-menu) > .sub-menu, nav li:has(.sub-menu) > .sub-menu, .navbar li:has(.sub-menu) > .sub-menu, #navMenu li:has(.sub-menu) > .sub-menu { flex-basis: 100% !important; width: 100% !important; }
+        .nav-menu li:has(.sub-menu) > a [class*="chevron"], .nav-menu li:has(.sub-menu) > a [class*="arrow"], .nav-menu li:has(.sub-menu) > a .fa-chevron-down, .nav-menu li:has(.sub-menu) > a .fa-angle-down, nav li:has(.sub-menu) > a [class*="chevron"], nav li:has(.sub-menu) > a [class*="arrow"], #navMenu li:has(.sub-menu) > a [class*="chevron"], #navMenu li:has(.sub-menu) > a [class*="arrow"] { display: none !important; visibility: hidden !important; }
+        .mobile-submenu-toggle { display: flex !important; align-items: center !important; justify-content: center !important; width: 44px !important; height: auto !important; background: transparent !important; border: none !important; cursor: pointer !important; color: var(--text-light) !important; position: static !important; flex-shrink: 0 !important; align-self: stretch !important; z-index: 2 !important; padding: 0 !important; margin: 0 !important; }
+        .mobile-submenu-toggle::after { content: '' !important; width: 0 !important; height: 0 !important; border-left: 6px solid transparent !important; border-right: 6px solid transparent !important; border-top: 7px solid currentColor !important; transition: transform 0.3s ease !important; }
+        .mobile-submenu-toggle.expanded::after { transform: rotate(180deg) !important; }
+        .sub-menu a { padding: 10px 0 !important; display: block !important; color: var(--text-light) !important; white-space: normal !important; }
+        .sub-menu .zappy-nav-child > a { padding-left: 28px !important; font-size: 0.9em !important; opacity: 0.85 !important; }
+        [dir="rtl"] .sub-menu .zappy-nav-child > a, html[lang="he"] .sub-menu .zappy-nav-child > a, html[lang="ar"] .sub-menu .zappy-nav-child > a { padding-left: 0 !important; padding-right: 28px !important; }
+        .sub-menu .zappy-nav-parent > a { font-weight: 600 !important; }
+        .nav-menu.active, #navMenu.active { max-width: 100vw !important; overflow-x: hidden !important; box-sizing: border-box !important; }
+        .navbar .sub-menu li a, nav.navbar .sub-menu li a, .zappy-products-dropdown .sub-menu a { color: var(--text-light) !important; }
+      }
+      @media (min-width: 769px) { .mobile-submenu-toggle { display: none !important; } }
+    </style>
+
+    <style id="zappy-widget-visibility">
+      html[dir="rtl"] .whatsapp-float { right: 20px !important; left: auto !important; }
+      html[dir="ltr"] .whatsapp-float, html:not([dir]) .whatsapp-float { left: 20px !important; right: auto !important; }
+      html[dir="rtl"] #mic-access-tool-general-button, html[dir="rtl"] .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="rtl"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="rtl"] ._access-icon { left: 20px !important; right: auto !important; }
+      html[dir="ltr"] #mic-access-tool-general-button, html[dir="ltr"] .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool .mic-access-tool-general-button,
+      html[dir="ltr"] #mic-init-access-tool #mic-access-tool-general-button,
+      html[dir="ltr"] ._access-icon,
+      html:not([dir]) #mic-access-tool-general-button, html:not([dir]) .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool .mic-access-tool-general-button,
+      html:not([dir]) #mic-init-access-tool #mic-access-tool-general-button,
+      html:not([dir]) ._access-icon { right: 20px !important; left: auto !important; }
+      @media (max-width: 768px) { .whatsapp-float { display: flex !important; } }
+      @media (min-width: 769px) { .whatsapp-float { display: flex !important; } }
+      @media (max-width: 768px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+      @media (min-width: 769px) {
+        #mic-access-tool-general-button, .mic-access-tool-general-button,
+        #mic-init-access-tool .mic-access-tool-general-button, #mic-init-access-tool #mic-access-tool-general-button,
+        ._access-icon { display: flex !important; visibility: visible !important; opacity: 1 !important; pointer-events: auto !important; }
+        #mic-access-tool-box.opened-mic-access-tool, .mic-access-tool-box.opened-mic-access-tool,
+        #mic-init-access-tool #mic-access-tool-box.opened-mic-access-tool {
+          visibility: visible !important; opacity: 1 !important; pointer-events: auto !important;
+        }
+      }
+    </style>
+</head>
+<body>
+<a class="skip-link" href="#main">דלג לתוכן הראשי</a>
+  <nav class="navbar" dir="rtl">
+  <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+    <svg class="hamburger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" style="display: none;">
+      <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+  </button>
+
+  <button class="phone-header-btn" data-phone="[business_phone]" aria-label="Call">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+    </svg>
+  </button>
+
+  <div class="nav-container">
+    <div class="nav-right-group"><div class="nav-brand">
+      <a href="/" class="logo-link"><img class="logo" src="/assets/site---------image-1.webp" alt="שמואל הנדלר יועץ ומלווה משקיעים בחו" ל"=""></a>
+    </div><ul class="nav-menu" id="navMenu"><li><a href="/">בית</a></li><li><a href="/services">שירותים</a></li><li><a href="/about">אודות</a></li></ul></div>
+
+    
+
+    <div class="nav-cta-container">
+      <a href="/contact" class="nav-cta-btn">צור קשר</a>
+    </div>
+  </div>
+</nav>
+<script>
+
+// Navbar Mobile Menu Toggle and Contrast Fix
+(function() {
+  // Use 'load' event instead of 'DOMContentLoaded' to ensure we run AFTER all other scripts
+  window.addEventListener('load', function() {
+    
+    // FIX MOBILE BUTTON CONTRAST
+    // Detect navbar background color and apply contrasting color to mobile buttons
+    const navbar = document.querySelector('.navbar, nav, header');
+    if (!navbar) {
+      console.log('[Navbar] Navbar element not found');
+      return;
+    }
+    
+    // DECLARE VARIABLES EARLY to avoid Temporal Dead Zone errors
+    // These are used in multiple places below
+    let mobileToggle = document.getElementById('mobileToggle') ||
+                       document.querySelector('.mobile-toggle') ||
+                       document.querySelector('.hamburger') ||
+                       document.querySelector('.hamburger-menu') ||
+                       document.querySelector('.menu-toggle') ||
+                       document.querySelector('.burger-menu') ||
+                       document.querySelector('[aria-label="Menu"]') ||
+                       document.querySelector('[aria-label="תפריט"]');
+    
+    const phoneBtn = document.querySelector('.phone-header-btn');
+    
+    const computedStyle = window.getComputedStyle(navbar);
+    let bgColor = computedStyle.backgroundColor;
+    
+    console.log('[Navbar] Initial navbar background:', bgColor);
+    
+    // Check if background is transparent or rgba with 0 alpha
+    const isTransparent = bgColor === 'transparent' || 
+                         bgColor === 'rgba(0, 0, 0, 0)' ||
+                         (bgColor.startsWith('rgba') && bgColor.includes(', 0)'));
+    
+    if (isTransparent) {
+      // Check for background-image or gradient
+      const bgImage = computedStyle.backgroundImage;
+      if (bgImage && bgImage !== 'none') {
+        console.log('[Navbar] Navbar has background image/gradient, using dark text');
+        bgColor = 'rgb(240, 240, 240)'; // Assume light background
+      } else {
+        // Transparent navbar - check body background
+        const bodyBg = window.getComputedStyle(document.body).backgroundColor;
+        console.log('[Navbar] Navbar transparent, using body background:', bodyBg);
+        bgColor = bodyBg;
+      }
+    }
+    
+    // Calculate luminance to determine if background is light or dark
+    const rgb = bgColor.match(/\d+/g);
+    if (rgb && rgb.length >= 3) {
+      const r = parseInt(rgb[0]);
+      const g = parseInt(rgb[1]);
+      const b = parseInt(rgb[2]);
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Mobile button colors are set by Claude's AI-generated CSS (same as .nav-menu a)
+      // No dynamic color overrides needed - colors come from the generated navbar CSS
+      console.log('[Navbar] Mobile button colors preserved from Claude CSS (luminance:', luminance.toFixed(2) + ')');
+      
+      // FIX ICON SIZES - Ensure SVGs are properly sized and visible
+      // INJECT CRITICAL CSS TO OVERRIDE ANY CONFLICTING RULES
+      const criticalCSS = document.createElement('style');
+      criticalCSS.id = 'zappy-mobile-nav-fix';
+      const htmlLang = document.documentElement.lang || 'en';
+      const htmlDir = document.documentElement.dir || 'ltr';
+      // Check both dir attribute AND lang for RTL detection
+      // dir="rtl" is the most reliable indicator
+      const isRTL = htmlDir === 'rtl' || htmlLang === 'he' || htmlLang === 'ar';
+      
+      criticalCSS.textContent = `
+        /* Hide mobile buttons on desktop, show only on mobile */
+        @media (min-width: 769px) {
+          .mobile-toggle,
+          .phone-header-btn {
+            display: none !important;
+          }
+        }
+        
+        /* Show and position mobile buttons correctly on mobile */
+        @media (max-width: 768px) {
+          .navbar,
+          nav.navbar {
+            min-height: 70px !important;
+          }
+
+          .mobile-toggle,
+          .phone-header-btn {
+            position: absolute !important;
+            top: 0 !important;
+            bottom: 0 !important;
+            margin-top: auto !important;
+            margin-bottom: auto !important;
+            transform: none !important;
+            z-index: 1001 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 36px !important;
+            height: 36px !important;
+            border-radius: 50% !important;
+            border: none !important;
+            cursor: pointer !important;
+            padding: 6px !important;
+            background: none !important;
+            color: var(--nav-text, var(--text-light)) !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+
+          html[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          body[data-zappy-site-type="ecommerce"] .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] header .phone-header-btn,
+          html[data-zappy-site-type="ecommerce"] nav .phone-header-btn {
+            display: none !important;
+            visibility: hidden !important;
+            width: 0 !important;
+            height: 0 !important;
+            min-width: 0 !important;
+            overflow: hidden !important;
+          }
+          
+          /* LTR positioning (default): hamburger LEFT, phone RIGHT */
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .mobile-toggle,
+          html[dir="ltr"] .mobile-toggle {
+            left: 12px !important;
+            right: auto !important;
+          }
+          html:not([dir="rtl"]):not([lang="he"]):not([lang="ar"]) .phone-header-btn,
+          html[dir="ltr"] .phone-header-btn {
+            right: 12px !important;
+            left: auto !important;
+          }
+          
+          /* RTL positioning: hamburger RIGHT, phone LEFT */
+          html[dir="rtl"] .mobile-toggle,
+          html[lang="he"] .mobile-toggle,
+          html[lang="ar"] .mobile-toggle {
+            right: 12px !important;
+            left: auto !important;
+          }
+          html[dir="rtl"] .phone-header-btn,
+          html[lang="he"] .phone-header-btn,
+          html[lang="ar"] .phone-header-btn {
+            left: 12px !important;
+            right: auto !important;
+          }
+          
+          /* CRITICAL: Ensure nav-container has min-height on mobile */
+          /* All children are positioned absolutely/fixed on mobile, so height:auto collapses to 0 */
+          .nav-container {
+            min-height: 70px !important;
+            position: relative !important;
+          }
+          
+          /* Ensure SVG icons are properly sized and inherit color */
+          .mobile-toggle svg,
+          .phone-header-btn svg {
+            width: 24px !important;
+            height: 24px !important;
+            /* Don't force display - let JavaScript control hamburger/close toggle */
+          }
+          
+          /* Reset nav-cta-container on mobile - remove desktop box-shadow/padding */
+          /* that creates a visible ghost box when CTA button is hidden */
+          .nav-cta-container {
+            box-shadow: none !important;
+            padding: 0 !important;
+          }
+          
+          /* Hide nav-cta-container entirely on mobile when there's no lang-switcher */
+          /* (only the CTA button is inside, and it's hidden on mobile) */
+          .nav-cta-container:not(:has(.lang-switcher)) {
+            display: none !important;
+          }
+          
+          /* CRITICAL: Prevent hero image fade gradient from bleeding over headline text */
+          /* The .image-fade-gradient has bottom: -30px (extends below parent) */
+          /* On mobile stacked layout, this overlaps the h1 text below the image */
+          .hero-image-column {
+            overflow: hidden !important;
+          }
+          .image-fade-gradient {
+            bottom: 0 !important;
+          }
+          
+          /* Hide desktop language switcher on mobile - hamburger menu handles it */
+          /* High specificity to override stored CSS */
+          .lang-switcher,
+          .nav-cta-container .lang-switcher,
+          .nav-container .lang-switcher,
+          .navbar .lang-switcher,
+          .navbar .nav-cta-container .lang-switcher {
+            display: none !important;
+          }
+        }
+      `;
+      
+      // Remove existing fix if present and inject new one
+      const existing = document.getElementById('zappy-mobile-nav-fix');
+      if (existing) existing.remove();
+      document.head.appendChild(criticalCSS);
+      
+      console.log('[Navbar] Critical CSS injected for mobile nav positioning');
+      
+      // ONLY apply inline positioning styles on mobile viewport
+      // On desktop, the CSS handles hiding these buttons with display: none
+      // Inline styles were breaking desktop layout by overriding CSS
+      const isMobileViewport = window.innerWidth <= 768;
+      
+      if (mobileToggle) {
+        // Icon sizing applies to all viewports for consistency
+        const hamburgerIcon = mobileToggle.querySelector('.hamburger-icon');
+        const closeIcon = mobileToggle.querySelector('.close-icon');
+        
+        if (hamburgerIcon) {
+          hamburgerIcon.style.setProperty('width', '24px', 'important');
+          hamburgerIcon.style.setProperty('height', '24px', 'important');
+          hamburgerIcon.style.setProperty('display', 'block', 'important'); // Show hamburger by default
+        }
+        if (closeIcon) {
+          closeIcon.style.setProperty('width', '24px', 'important');
+          closeIcon.style.setProperty('height', '24px', 'important');
+          closeIcon.style.setProperty('display', 'none', 'important'); // Hide close icon by default
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          mobileToggle.style.setProperty('position', 'absolute', 'important');
+          mobileToggle.style.setProperty('top', '0', 'important');
+          mobileToggle.style.setProperty('bottom', '0', 'important');
+          mobileToggle.style.setProperty('margin-top', 'auto', 'important');
+          mobileToggle.style.setProperty('margin-bottom', 'auto', 'important');
+          mobileToggle.style.setProperty('transform', 'none', 'important');
+          mobileToggle.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          
+          console.log('[Navbar] Mobile toggle positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          mobileToggle.style.removeProperty('position');
+          mobileToggle.style.removeProperty('top');
+          mobileToggle.style.removeProperty('transform');
+          mobileToggle.style.removeProperty('z-index');
+          mobileToggle.style.removeProperty('left');
+          mobileToggle.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared mobile toggle inline positioning');
+        }
+      }
+      
+      if (phoneBtn) {
+        // Icon sizing applies to all viewports
+        const phoneIcon = phoneBtn.querySelector('svg');
+        if (phoneIcon) {
+          phoneIcon.style.width = '24px';
+          phoneIcon.style.height = '24px';
+          phoneIcon.setAttribute('width', '24');
+          phoneIcon.setAttribute('height', '24');
+        }
+        
+        // ONLY set positioning inline styles on mobile
+        if (isMobileViewport) {
+          phoneBtn.style.setProperty('position', 'absolute', 'important');
+          phoneBtn.style.setProperty('top', '0', 'important');
+          phoneBtn.style.setProperty('bottom', '0', 'important');
+          phoneBtn.style.setProperty('margin-top', 'auto', 'important');
+          phoneBtn.style.setProperty('margin-bottom', 'auto', 'important');
+          phoneBtn.style.setProperty('transform', 'none', 'important');
+          phoneBtn.style.setProperty('z-index', '1001', 'important');
+          
+          // Clear any inline left/right so CSS can take over based on html[dir]
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          
+          console.log('[Navbar] Phone button positioning applied (mobile viewport)');
+        } else {
+          // On desktop, clear any positioning styles to let CSS handle it
+          phoneBtn.style.removeProperty('position');
+          phoneBtn.style.removeProperty('top');
+          phoneBtn.style.removeProperty('transform');
+          phoneBtn.style.removeProperty('z-index');
+          phoneBtn.style.removeProperty('left');
+          phoneBtn.style.removeProperty('right');
+          console.log('[Navbar] Desktop viewport - cleared phone button inline positioning');
+        }
+      }
+    } else {
+      console.log('[Navbar] Could not parse background color:', bgColor);
+    }
+    
+    // MOBILE MENU TOGGLE
+    // Re-query in case DOM changed (mobileToggle already declared at top of function)
+    mobileToggle = document.getElementById('mobileToggle') ||
+                   document.querySelector('.mobile-toggle') ||
+                   document.querySelector('.hamburger') ||
+                   document.querySelector('.hamburger-menu') ||
+                   document.querySelector('.menu-toggle') ||
+                   document.querySelector('.burger-menu') ||
+                   document.querySelector('[aria-label="Menu"]') ||
+                   document.querySelector('[aria-label="תפריט"]');
+    
+    // EXPANDED SEARCH: Find nav menu by ID or class
+    const navMenu = document.getElementById('navMenu') ||
+                  document.querySelector('.nav-menu') ||
+                  document.querySelector('.nav-links') ||
+                  document.querySelector('nav ul:not(.submenu)');
+    
+    if (!mobileToggle || !navMenu) {
+      console.log('[Navbar] Mobile toggle or menu not found:', { toggle: !!mobileToggle, menu: !!navMenu });
+      return;
+    }
+    
+    // Ensure navMenu has ID for CSS targeting
+    if (!navMenu.id) {
+      navMenu.id = 'navMenu';
+    }
+    
+    console.log('[Navbar] Initializing mobile menu...');
+    
+    // Remove any existing event listeners by cloning the button
+    const newToggle = mobileToggle.cloneNode(true);
+    mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+    
+    // Toggle menu handler (shared by click and touchend)
+    function handleToggle(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+      const closeIcon = newToggle.querySelector('.close-icon');
+      const isActive = navMenu.classList.contains('active');
+      
+      if (isActive) {
+        // Close menu
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed');
+      } else {
+        // Open menu
+        navMenu.classList.add('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'none', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'block', 'important');
+        document.body.style.overflow = 'hidden';
+        console.log('[Navbar] Menu opened');
+      }
+    }
+    
+    // Use click for desktop/emulation and touchend as iOS Safari fallback.
+    // Prevent double-fire with a timestamp guard.
+    var lastToggleTime = 0;
+    function guardedToggle(e) {
+      var now = Date.now();
+      if (now - lastToggleTime < 300) return;
+      lastToggleTime = now;
+      handleToggle(e);
+    }
+    
+    newToggle.addEventListener('click', guardedToggle);
+    newToggle.addEventListener('touchend', guardedToggle);
+    
+    // Close menu when clicking nav links (but NOT dropdown toggles)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        // Don't close if it's a dropdown child (unless it's a real navigation link)
+        if (this.getAttribute('href') === '#') return;
+        
+        const hamburgerIcon = newToggle.querySelector('.hamburger-icon');
+        const closeIcon = newToggle.querySelector('.close-icon');
+        
+        navMenu.classList.remove('active');
+        if (hamburgerIcon) hamburgerIcon.style.setProperty('display', 'block', 'important');
+        if (closeIcon) closeIcon.style.setProperty('display', 'none', 'important');
+        document.body.style.overflow = '';
+        console.log('[Navbar] Menu closed (link clicked)');
+      });
+    });
+    
+    // DROPDOWN MENU TOGGLE (for mobile and touch devices)
+    var dropdownToggles = navMenu.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var parent = this.closest('.nav-dropdown');
+        if (!parent) return;
+        
+        // Close other open dropdowns at the same level
+        var siblings = parent.parentNode.querySelectorAll('.nav-dropdown.open');
+        siblings.forEach(function(sib) {
+          if (sib !== parent) sib.classList.remove('open');
+        });
+        
+        parent.classList.toggle('open');
+        console.log('[Navbar] Dropdown toggled:', parent.classList.contains('open') ? 'open' : 'closed');
+      });
+    });
+    
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-dropdown')) {
+        var openDropdowns = document.querySelectorAll('.nav-dropdown.open');
+        openDropdowns.forEach(function(dd) { dd.classList.remove('open'); });
+      }
+    });
+    
+    console.log('[Navbar] Dropdown handlers initialized for ' + dropdownToggles.length + ' dropdowns');
+    
+    // Phone button functionality (phoneBtn already declared at top of function)
+    if (phoneBtn) {
+      phoneBtn.addEventListener('click', function() {
+        // Get phone number from placeholder in page or use default
+        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
+        const phoneNumber = phoneLinks.length > 0 
+          ? phoneLinks[0].getAttribute('href').replace('tel:', '')
+          : '[business_phone]';
+        
+        window.location.href = 'tel:' + phoneNumber;
+        console.log('[Navbar] Phone button clicked');
+      });
+    }
+    
+    console.log('[Navbar] Mobile menu initialized successfully');
+    
+    // WhatsApp button visibility is now controlled via CSS (siteSettings).
+    // No JS-based desktop hiding — the button is visible on both mobile and desktop by default.
+  });
+})();
+
+</script>
+  
+  <main id="main">
+    <section class="services-intro-section" data-layout-spec="שירותים-intro" dir="rtl">
+  <!-- Cartographic texture overlay -->
+  <div class="services-intro-texture" aria-hidden="true"></div>
+
+  <!-- Greece map watercolor motif -->
+  <div class="services-intro-map-motif" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg" width="320" height="380">
+      <path d="M160,20 C140,25 125,35 115,50 C105,65 108,80 100,90 C92,100 78,105 72,118 C66,131 70,148 65,162 C60,176 48,185 45,200 C42,215 50,228 55,242 C60,256 58,270 65,282 C72,294 85,300 95,310 C105,320 112,332 125,338 C138,344 152,340 165,338 C178,336 190,330 200,320 C210,310 215,296 222,284 C229,272 238,262 240,248 C242,234 236,220 235,206 C234,192 238,178 235,164 C232,150 222,140 218,127 C214,114 218,100 212,88 C206,76 193,70 185,60 C177,50 175,36 165,26 Z" fill="#4A7FC1" opacity="0.22"></path>
+      <path d="M95,310 C88,320 82,332 88,344 C94,356 108,358 118,352 C128,346 130,332 125,322 Z" fill="#4A7FC1" opacity="0.18"></path>
+      <path d="M200,320 C205,332 210,346 222,350 C234,354 245,344 244,332 C243,320 232,314 222,316 Z" fill="#4A7FC1" opacity="0.16"></path>
+      <path d="M240,248 C252,244 265,248 270,260 C275,272 268,284 256,286 C244,288 235,278 235,266 Z" fill="#4A7FC1" opacity="0.14"></path>
+      <path d="M45,200 C32,198 20,205 18,218 C16,231 26,242 38,240 C50,238 55,226 52,214 Z" fill="#4A7FC1" opacity="0.12"></path>
+    </svg>
+  </div>
+
+  <div class="services-intro-container">
+
+    <!-- Top centered title area -->
+    <header class="services-intro-header">
+      <p class="services-intro-eyebrow">גישת הייעוץ שלנו</p>
+      <h1 class="services-intro-title">ליווי מקצועי להשקעה<br>חכמה בנדל"ן יווני</h1>
+      <div class="services-intro-gold-rule" aria-hidden="true"></div>
+      <p class="services-intro-lead">אנו מלווים משקיעים ישראלים בכל שלב של רכישת נכסים באתונה — מהגדרת המטרות ועד חתימת החוזה. הגישה שלנו משלבת הבנה עמוקה של שוק הנדל"ן היווני עם ייעוץ השקעות נדל"ן מותאם אישית לצרכי כל משקיע.</p>
+    </header>
+
+    <!-- Thin rule separator -->
+    <div class="services-intro-separator" aria-hidden="true"></div>
+
+    <!-- Three-column overview grid -->
+    <div class="services-intro-grid">
+
+      <article class="services-intro-card">
+        <div class="services-intro-card-icon" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+            <circle cx="24" cy="20" r="8" stroke="currentColor" stroke-width="1.5"></circle>
+            <path d="M8 40c0-8.837 7.163-16 16-16s16 7.163 16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M36 14l4-4M38 18h4M34 10l2-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <div class="services-intro-card-content">
+          <h3 class="services-intro-card-title">הבנת יעדי המשקיע</h3>
+          <p class="services-intro-card-text">כל תהליך מתחיל בשיחת עומק אישית. אנו מבינים את המטרות הפיננסיות שלך, את טווח ההשקעה, ואת הציפיות מהנכס — בין אם מדובר בתשואת שכירות שוטפת או בעליית ערך לאורך זמן.</p>
+          <div class="services-intro-card-range">תקציב מומלץ: <strong>€60,000 – €80,000</strong></div>
+        </div>
+      </article>
+
+      <article class="services-intro-card services-intro-card--center">
+        <div class="services-intro-card-icon" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+            <rect x="6" y="10" width="36" height="28" rx="3" stroke="currentColor" stroke-width="1.5"></rect>
+            <path d="M6 18h36" stroke="currentColor" stroke-width="1.5"></path>
+            <circle cx="16" cy="28" r="3" stroke="currentColor" stroke-width="1.5"></circle>
+            <path d="M22 26h12M22 30h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M14 10V6M34 10V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <div class="services-intro-card-content">
+          <h3 class="services-intro-card-title">איתור דירות מתאימות באתונה</h3>
+          <p class="services-intro-card-text">אנו מסרקים את שוק הנדל"ן האתונאי ומאתרים דירות של 50–60 מ"ר בשכונות בעלות פוטנציאל השקעה גבוה. כל נכס עובר בדיקה מעמיקה של מצב משפטי, מצב פיזי ופוטנציאל תשואה.</p>
+          <div class="services-intro-card-range">גודל נכס: <strong>50 – 60 מ"ר</strong></div>
+        </div>
+      </article>
+
+      <article class="services-intro-card">
+        <div class="services-intro-card-icon" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+            <path d="M24 6L6 16v4h36v-4L24 6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>
+            <path d="M12 20v16M20 20v16M28 20v16M36 20v16" stroke="currentColor" stroke-width="1.5"></path>
+            <path d="M6 36h36" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M4 42h40" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+          </svg>
+        </div>
+        <div class="services-intro-card-content">
+          <h3 class="services-intro-card-title">ליווי בין-לאומי לאורך כל הדרך</h3>
+          <p class="services-intro-card-text">גשר אמין בין המשקיע הישראלי לשוק היווני. אנו מנהלים את ההיבטים המשפטיים, הבירוקרטיים והמעשיים — כולל תיאום עם עורכי דין, נוטריונים ומתווכים מקומיים — עד לסגירת העסקה.</p>
+          <div class="services-intro-card-range">ליווי מלא: <strong>מהייעוץ ועד המפתח</strong></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Bottom contour-line divider -->
+  <div class="services-intro-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Contour lines growing denser toward bottom -->
+      <path d="M0,72 Q180,66 360,70 T720,68 Q900,72 1080,66 T1440,70 L1440,90 L0,90 Z" fill="#1C2B4A" opacity="1"></path>
+      <path d="M0,78 Q200,73 400,76 T800,74 Q1000,78 1200,72 T1440,76" stroke="rgba(200,151,43,0.18)" stroke-width="0.8" fill="#1C2B4A"></path>
+      <path d="M0,68 Q160,62 320,66 T640,63 Q820,67 1000,61 T1440,65" stroke="rgba(200,151,43,0.10)" stroke-width="0.6" fill="#1C2B4A"></path>
+      <path d="M0,58 Q220,52 440,56 T880,53 Q1060,57 1240,51 T1440,55" stroke="rgba(200,151,43,0.07)" stroke-width="0.5" fill="#1C2B4A"></path>
+      <path d="M0,48 Q180,43 360,47 T720,44 Q900,48 1080,42 T1440,46" stroke="rgba(200,151,43,0.05)" stroke-width="0.4" fill="#1C2B4A"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="services-process-section" data-layout-spec="שירותים-process" dir="rtl">
+  <!-- Decorative map texture overlay -->
+  <div class="sps-map-texture" aria-hidden="true"></div>
+
+  <div class="sps-container">
+    <!-- Section Header -->
+    <div class="sps-header">
+      <span class="sps-eyebrow">איך זה עובד</span>
+      <h2 class="sps-title">תהליך הליווי שלנו</h2>
+      <div class="sps-gold-bar" aria-hidden="true"></div>
+      <p class="sps-subtitle">מהפגישה הראשונה ועד לחתימה על הנכס — אנחנו לצדכם בכל שלב בדרך לרכישת נכס מניב באתונה</p>
+    </div>
+
+    <!-- Process Rows -->
+    <div class="sps-steps">
+
+      <!-- Step 1: Text RIGHT, Image LEFT -->
+      <article class="sps-step sps-step--text-right">
+        <div class="sps-step-content">
+          <div class="sps-step-number" aria-hidden="true">01</div>
+          <h3 class="sps-step-title">פגישת היכרות והתאמת משקיע</h3>
+          <p class="sps-step-desc">כל מסע מתחיל בשיחה כנה. בפגישה הראשונה נבין לעומק את המטרות הפיננסיות שלכם, את רמת הסיכון המועדפת ואת הציפיות מההשקעה. נבחן יחד האם השוק היווני — ובפרט אתונה — מתאים לפרופיל שלכם, ונגדיר יעדים ברורים לתהליך.</p>
+          <div class="sps-step-accent-line" aria-hidden="true"></div>
+        </div>
+        <figure class="sps-step-visual">
+          <img loading="eager" fetchpriority="high" data-placeholder="services-process-image-1" data-context="Two professionals in a modern office setting having a consultation meeting over a map of Athens and financial documents, warm Mediterranean light, premium advisory atmosphere, real estate investment consulting" width="480" height="320" src="/assets/site-services-process-image-1.webp" alt="פגישת ייעוץ ראשונית עם משקיע">
+          <div class="sps-visual-border" aria-hidden="true"></div>
+        </figure>
+      </article>
+
+      <!-- Step 2: Text LEFT, Image RIGHT -->
+      <article class="sps-step sps-step--text-left">
+        <figure class="sps-step-visual">
+          <img loading="lazy" decoding="async" data-placeholder="services-process-image-2" data-context="Aerial view of Athens neighborhoods with residential apartment buildings, Acropolis visible in background, warm golden hour light, map overlay style, Mediterranean urban real estate market overview" width="480" height="320" src="/assets/site-services-process-image-2.webp" alt="שוק הנדלן באתונה — סקירת שכונות">
+          <div class="sps-visual-border" aria-hidden="true"></div>
+        </figure>
+        <div class="sps-step-content">
+          <div class="sps-step-number" aria-hidden="true">02</div>
+          <h3 class="sps-step-title">אוריינטציה בשוק אתונה</h3>
+          <p class="sps-step-desc">שוק הנדלן ביוון שונה מהותית מהישראלי. נציג בפניכם סקירה מעמיקה של השכונות הרלוונטיות באתונה, טווחי המחירים הריאליים לדירות 50–60 מ"ר בתקציב €60K–€80K, פוטנציאל ההשכרה, ומגמות השוק הנוכחיות. תצאו עם תמונה ברורה ואמינה — ללא הבטחות מוגזמות.</p>
+          <div class="sps-step-accent-line" aria-hidden="true"></div>
+        </div>
+      </article>
+
+      <!-- Step 3: Text RIGHT, Image LEFT -->
+      <article class="sps-step sps-step--text-right">
+        <div class="sps-step-content">
+          <div class="sps-step-number" aria-hidden="true">03</div>
+          <h3 class="sps-step-title">סינון ובחירת נכסים</h3>
+          <p class="sps-step-desc">על בסיס הפרופיל שהגדרנו יחד, נסנן עבורכם נכסים רלוונטיים ונבצע הערכה מקצועית של כל אחד מהם: מצב הנכס, פוטנציאל השכרה, עלויות צפויות ועוד. תקבלו רשימה קצרה ומדויקת של נכסים ראויים לבחינה — ולא תאלצו לנפות בעצמכם עשרות מודעות לא רלוונטיות.</p>
+          <div class="sps-step-accent-line" aria-hidden="true"></div>
+        </div>
+        <figure class="sps-step-visual">
+          <img loading="lazy" decoding="async" data-placeholder="services-process-image-3" data-context="Interior of a bright 50-60 sqm Athens apartment being evaluated, clean modern Mediterranean style, checklist documents and property evaluation papers on a table, professional real estate assessment" width="480" height="320" src="/assets/site-services-process-image-3.webp" alt="הערכת נכסים מסוננים לרכישה">
+          <div class="sps-visual-border" aria-hidden="true"></div>
+        </figure>
+      </article>
+
+      <!-- Step 4: Text LEFT, Image RIGHT -->
+      <article class="sps-step sps-step--text-left">
+        <figure class="sps-step-visual">
+          <img loading="lazy" decoding="async" data-placeholder="services-process-image-4" data-context="Signing of real estate purchase documents in a Greek notary office, fountain pen on contract papers, Israeli and Greek flags subtly in background, trust and partnership atmosphere, property acquisition closing" width="480" height="320" src="/assets/site-services-process-image-4.webp" alt="ליווי בתהליך הרכישה וחתימה על הנכס">
+          <div class="sps-visual-border" aria-hidden="true"></div>
+        </figure>
+        <div class="sps-step-content">
+          <div class="sps-step-number" aria-hidden="true">04</div>
+          <h3 class="sps-step-title">ליווי מלא עד לסגירת העסקה</h3>
+          <p class="sps-step-desc">ברגע שמצאנו את הנכס הנכון — אנחנו לא נעלמים. נלווה אתכם לאורך כל שלבי הרכישה: מו"מ על המחיר, תיאום עם עורך דין מקומי, בדיקות משפטיות ורישומיות, העברת כספים ועד לקבלת המפתח. כל זאת תוך שמירה על שקיפות מלאה ותקשורת ישירה — בעברית.</p>
+          <div class="sps-step-accent-line" aria-hidden="true"></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Bottom angled divider into next light section -->
+  <div class="sps-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,80 L0,60 L1440,10 L1440,80 Z" fill="#F2EDE4"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="services-benefits-section" data-layout-spec="שירותים-benefits" dir="rtl">
+  <!-- Stone texture backplate decoration -->
+  <div class="services-benefits-backplate" aria-hidden="true"></div>
+
+  <div class="services-benefits-container">
+    <!-- Right column: heading + intro text -->
+    <div class="services-benefits-intro">
+      <div class="services-benefits-eyebrow">למה לעבוד איתנו</div>
+      <h2 class="services-benefits-heading">יתרון אמיתי בשוק שאתם לא מכירים</h2>
+      <div class="services-benefits-accent-bar" aria-hidden="true"></div>
+      <p class="services-benefits-lead">ההבדל בין השקעה מוצלחת לאכזבה יקרה מתחיל בידע מקומי. כיועץ המתמחה בשוק הנדל"ן האתונאי, אני מביא לכם את הבהירות, הביטחון וההבנה השכונתית שנדרשים לקבל החלטות נכונות — בטווח ההשקעה הנגיש של €60,000–€80,000.</p>
+      <p>ליווי מקצועי בייעוץ השקעות נדל"ן אינו רק חיסכון בזמן — הוא ההבדל בין נכס שמניב לבין נכס שתוקע אתכם. אני מתרגם עבורכם שפה, חוק, ותרבות שוק לכדי החלטה מושכלת.</p>
+    </div>
+
+    <!-- Left column: 2x2 benefit grid -->
+    <div class="services-benefits-grid">
+
+      <article class="services-benefit-card">
+        <div class="services-benefit-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="20" cy="20" r="16"></circle>
+            <path d="M20 12v8l5 5"></path>
+          </svg>
+        </div>
+        <div class="services-benefit-content">
+          <h3>ציפיות ברורות מהיום הראשון</h3>
+          <p>אני מציג תמונה מלאה ואמינה של תהליך הרכישה — לוחות זמנים, עלויות נלוות, ובירוקרטיה יוונית — כך שלא תופתעו בדרך.</p>
+        </div>
+      </article>
+
+      <article class="services-benefit-card">
+        <div class="services-benefit-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 32 L20 10 L32 32 Z"></path>
+            <path d="M14 24h12"></path>
+          </svg>
+        </div>
+        <div class="services-benefit-content">
+          <h3>הבנה עמוקה של השכונות</h3>
+          <p>לא כל שכונה באתונה שווה — אני מכיר מקרוב את ההבדלים בין קוקאקי, ניאוס קוסמוס ופיריאוס, ועוזר לכם לבחור נכון.</p>
+        </div>
+      </article>
+
+      <article class="services-benefit-card">
+        <div class="services-benefit-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="14" width="24" height="18" rx="2"></rect>
+            <path d="M14 14v-4a6 6 0 0 1 12 0v4"></path>
+            <circle cx="20" cy="23" r="2" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </div>
+        <div class="services-benefit-content">
+          <h3>ביטחון בכל שלב של העסקה</h3>
+          <p>מהבדיקה המשפטית ועד חתימת החוזה — אני לצדכם עם עורכי דין, שמאים ומתווכים מקומיים שאני סומך עליהם.</p>
+        </div>
+      </article>
+
+      <article class="services-benefit-card">
+        <div class="services-benefit-icon-wrap" aria-hidden="true">
+          <svg data-element-type="icon" data-icon-type="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 8 L28 14 V26 A8 8 0 0 1 12 26 V14 Z"></path>
+            <path d="M16 22 l3 3 5-6"></path>
+          </svg>
+        </div>
+        <div class="services-benefit-content">
+          <h3>גישה לדירות במחיר נגיש</h3>
+          <p>אני מתמחה בדירות 50–60 מ"ר בטווח €60,000–€80,000 — נכסים שמציעים תשואה ריאלית למשקיע הישראלי הפרטי.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Bottom torn-paper divider -->
+  <div class="services-benefits-divider-wrapper">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,72 L0,38 Q30,32 60,40 T130,34 Q170,40 210,32 T290,38 Q330,34 370,40 T450,32 Q490,38 540,30 T620,36 Q660,32 700,40 T780,34 Q820,40 870,32 T950,38 Q990,34 1030,40 T1110,32 Q1150,38 1190,34 T1270,40 Q1310,36 1350,42 T1440,36 L1440,72 Z" fill="#F2EDE4"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="services-portfolio-section" data-layout-spec="שירותים-portfolio" dir="rtl">
+  <!-- Decorative map texture overlay -->
+  <div class="sps-texture-overlay" aria-hidden="true"></div>
+
+  <div class="sps-container">
+    <!-- Section Header -->
+    <div class="sps-header">
+      <p class="sps-eyebrow">גלריית נכסים</p>
+      <h2 class="sps-title">דירות להשקעה באתונה</h2>
+      <div class="sps-gold-bar" aria-hidden="true"></div>
+      <p class="sps-subtitle">סביבות מגורים אותנטיות, בניינים בעלי פוטנציאל, ושכונות עם ביקוש יציב — כל מה שמשקיע חכם מחפש בשוק הנדל"ן היווני</p>
+    </div>
+
+    <!-- Three-Card Grid -->
+    <div class="sps-grid">
+
+      <!-- Card 1 -->
+      <article class="sps-card sps-card--tall">
+        <div class="sps-card-image-wrap">
+          <img loading="lazy" decoding="async" data-placeholder="services-portfolio-image-1" data-context="A charming Athenian residential apartment building facade in a mid-range neighborhood like Kypseli or Pagrati. Warm Mediterranean light, neoclassical architectural details, balconies with potted plants, clean street-level view. Realistic photography style, not luxury — accessible and aspirational for Israeli real estate investors looking at 60K-80K euro properties." width="600" height="400" src="/assets/site-services-portfolio-image-1.webp" alt="חזית בניין מגורים אתונאי בשכונת קיפסלי">
+          <div class="sps-card-badge">שכונה מבוקשת</div>
+        </div>
+        <div class="sps-card-body">
+          <h3 class="sps-card-title">שכונות מגורים מרכזיות</h3>
+          <p class="sps-card-desc">שכונות כמו קיפסלי, פגרטי וגאזי מציעות דירות 50–60 מ"ר בטווח השקעה של 60,000–80,000 אירו, עם ביקוש שכירות יציב מצד סטודנטים ומשפחות צעירות.</p>
+          <div class="sps-card-meta">
+            <span class="sps-meta-tag">60K–80K €</span>
+            <span class="sps-meta-tag">50–60 מ"ר</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="sps-card sps-card--short">
+        <div class="sps-card-image-wrap">
+          <img loading="lazy" decoding="async" data-placeholder="services-portfolio-image-2" data-context="Interior of a renovated mid-range apartment in Athens, Greece. Bright living room with white walls, tiled floor, wooden furniture, and a balcony door open to Mediterranean light. 50-60 sqm apartment typical of the Athens real estate investment market. Realistic, warm, inviting — not luxury, but well-maintained and rental-ready." width="600" height="400" src="/assets/site-services-portfolio-image-2.webp" alt="פנים דירה משופצת באתונה מוכנה להשכרה">
+          <div class="sps-card-badge">מוכן להשכרה</div>
+        </div>
+        <div class="sps-card-body">
+          <h3 class="sps-card-title">דירות משופצות ומניבות</h3>
+          <p class="sps-card-desc">דירות בנות 2–3 חדרים עם שיפוץ קל מניבות תשואה שנתית של 5%–7%. ליווי מלא בבחירת הנכס, בדיקת המצב המשפטי, ורכישה בטוחה.</p>
+          <div class="sps-card-meta">
+            <span class="sps-meta-tag">תשואה 5%–7%</span>
+            <span class="sps-meta-tag">2–3 חדרים</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="sps-card sps-card--medium">
+        <div class="sps-card-image-wrap">
+          <img loading="lazy" decoding="async" data-placeholder="services-portfolio-image-3" data-context="Aerial or street-level view of a vibrant Athens neighborhood with a mix of residential buildings, cafes, and tree-lined streets. Showing the urban fabric and livability of a mid-range Athens district like Exarcheia, Koukaki or Neos Kosmos. Warm afternoon light, Mediterranean atmosphere, realistic investment-context photography for Israeli investors." width="600" height="400" src="/assets/site-services-portfolio-image-3.webp" alt="נוף שכונתי באתונה — אווירה ים-תיכונית עירונית">
+          <div class="sps-card-badge">אווירה ים-תיכונית</div>
+        </div>
+        <div class="sps-card-body">
+          <h3 class="sps-card-title">אווירה עירונית ים-תיכונית</h3>
+          <p class="sps-card-desc">אתונה מציעה שילוב נדיר של עלות כניסה נמוכה, תשתית עירונית בשלה, ואיכות חיים גבוהה — יתרון תחרותי ברור לכל יועץ נדל"ן המלווה משקיעים ישראלים בחו"ל.</p>
+          <div class="sps-card-meta">
+            <span class="sps-meta-tag">Golden Visa</span>
+            <span class="sps-meta-tag">שוק צומח</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <!-- End Grid -->
+
+    <!-- Bottom CTA -->
+    <div class="sps-cta-row">
+      <a href="/contact" class="sps-btn-primary">קבע שיחת ייעוץ ראשונית</a>
+      <span class="sps-cta-note">ללא עלות · ללא התחייבות</span>
+    </div>
+  </div>
+
+  <!-- Bottom sea-glass gradient divider -->
+  <div class="sps-divider-wrapper" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 1200 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="sps-sea-glass" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(231,224,210,0)"></stop>
+          <stop offset="100%" stop-color="#1C2430"></stop>
+        </linearGradient>
+      </defs>
+      <path d="M0,90 L0,38 Q80,28 160,40 T320,32 Q400,38 480,28 T640,36 Q720,42 800,30 T960,38 Q1040,44 1120,32 T1200,40 L1200,90 Z" fill="#152038"></path>
+    </svg>
+  </div>
+</section>
+
+<section class="services-cta-section" data-layout-spec="שירותים-cta" dir="rtl">
+  <!-- Decorative background motif -->
+  <div class="services-cta-bg-motif" aria-hidden="true">
+    <svg data-no-icon-edit="true" aria-hidden="true" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg" width="340" height="272">
+      <!-- Ionic column capital with scroll volutes -->
+      <g opacity="0.10">
+        <!-- Column shaft -->
+        <rect x="178" y="120" width="44" height="160" rx="2" fill="#C8972B"></rect>
+        <!-- Capital abacus -->
+        <rect x="148" y="100" width="104" height="14" rx="2" fill="#C8972B"></rect>
+        <!-- Echinus -->
+        <rect x="158" y="90" width="84" height="12" rx="6" fill="#C8972B"></rect>
+        <!-- Left volute -->
+        <path d="M158 90 C130 90 118 72 128 58 C138 44 158 50 158 68 C158 80 148 84 142 78 C136 72 140 62 148 64" stroke="#C8972B" stroke-width="3" fill="none"></path>
+        <!-- Right volute -->
+        <path d="M242 90 C270 90 282 72 272 58 C262 44 242 50 242 68 C242 80 252 84 258 78 C264 72 260 62 252 64" stroke="#C8972B" stroke-width="3" fill="none"></path>
+        <!-- Base -->
+        <rect x="162" y="278" width="76" height="10" rx="2" fill="#C8972B"></rect>
+        <rect x="154" y="286" width="92" height="8" rx="2" fill="#C8972B"></rect>
+        <!-- Fluting lines on shaft -->
+        <line x1="188" y1="122" x2="188" y2="276" stroke="#C8972B" stroke-width="1.5" opacity="0.6"></line>
+        <line x1="200" y1="122" x2="200" y2="276" stroke="#C8972B" stroke-width="1.5" opacity="0.6"></line>
+        <line x1="212" y1="122" x2="212" y2="276" stroke="#C8972B" stroke-width="1.5" opacity="0.6"></line>
+      </g>
+    </svg>
+  </div>
+
+  <div class="services-cta-container">
+    <!-- Gold accent line -->
+    <div class="services-cta-accent-line" aria-hidden="true"></div>
+
+    <div class="services-cta-content">
+      <p class="services-cta-eyebrow">השלב הבא מתחיל כאן</p>
+      <h2 class="services-cta-heading">מוכנים לרכוש דירת השקעה באתונה?</h2>
+      <p class="services-cta-body">אני מלווה משקיעים ישראלים לאורך כל התהליך — מאיתור הנכס הנכון ועד חתימת החוזה. דירות 50–60 מ״ר בטווח של 60,000–80,000 אירו, עם ליווי אישי מלא וניסיון מוכח בשוק היווני.</p>
+      <a href="/contact" class="services-cta-btn btn-primary">נדבר על ההשקעה שלכם <i class="fa-solid fa-arrow-right services-cta-btn-icon" aria-hidden="true"></i></a>
+    </div>
+
+    <!-- Bottom divider rule -->
+    <div class="services-cta-divider-rule" aria-hidden="true"></div>
+  </div>
+</section>
+  </main>
+  
+  <footer class="site-footer" dir="rtl" aria-label="כותרת תחתונה של האתר">
+  <div class="footer-inner">
+    <div class="footer-top">
+
+      <!-- Column 1: Company Info -->
+      <div class="footer-col footer-brand">
+        <a href="/" class="footer-logo-link">
+          <img src="/assets/real-estate-investment-consulting-logo.webp" alt="שמואל הנדלר יועץ ומלווה משקיעים בחו&quot;ל" class="logo">
+        </a>
+        <p class="footer-tagline">ליווי אישי ומקצועי להשקעות נדל"ן באתונה ויוון — מהזדמנות להצלחה.</p>
+        <p class="footer-blurb">שמואל הנדלר מביא שנים של ניסיון בשוק הנדל"ן הבינלאומי, ומלווה משקיעים ישראלים בכל שלב — מאיתור הנכס הנכון ועד לסגירת העסקה בביטחון מלא.</p>
+        <div class="footer-social" aria-label="רשתות חברתיות">
+          
+          
+          
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-col footer-nav">
+        <h3 class="footer-heading"><span class="heading-accent"></span>ניווט מהיר</h3>
+        <ul class="footer-links" aria-label="קישורים מהירים">
+          <li><a href="/">בית</a></li>
+          <li><a href="/services">שירותים</a></li>
+          <li><a href="/about">אודות</a></li>
+          <li><a href="/contact">צור קשר</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Contact Info -->
+      <div class="footer-col footer-contact-col">
+        <h3 class="footer-heading"><span class="heading-accent"></span>יצירת קשר</h3>
+        <ul class="footer-contact" aria-label="פרטי יצירת קשר">
+          <li>
+            <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+            <span class="contact-text"><a href="mailto:[business_email]">[business_email]</a></span>
+          </li>
+          <li>
+            <span class="contact-icon"><i class="fas fa-phone"></i></span>
+            <span class="contact-text"><a href="tel:[business_phone]">[business_phone]</a></span>
+          </li>
+          <li><a href="/"><span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+            <span class="contact-text">[business_address]</span></a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Hours -->
+      <div class="footer-col footer-hours">
+        <h3 class="footer-heading"><span class="heading-accent"></span>שעות פעילות</h3>
+        <ul class="hours-list">
+          <li><a href="/"><span class="day">ראשון – חמישי</span><span class="time">09:00 – 18:00</span></a></li>
+          <li><a href="/"><span class="day">שישי</span><span class="time">09:00 – 13:00</span></a></li>
+          <li><a href="/"><span class="day">שבת</span><span class="time">סגור</span></a></li>
+        </ul>
+        <div class="footer-badge">
+          <i class="fas fa-shield-alt"></i>
+          <span>ייעוץ ראשוני ללא עלות</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 שמואל הנדלר יועץ ומלווה משקיעים בחו"ל. כל הזכויות שמורות.</p>
+      <div class="footer-legal">
+        <a href="/privacy">מדיניות פרטיות</a>
+        <span class="legal-sep">|</span>
+        <a href="/terms">תנאי שימוש</a>
+        <span class="legal-sep">|</span>
+        <a href="/accessibility">נגישות</a>
+        <span class="legal-sep">|</span>
+        <a href="https://zappy5.com" target="_blank" class="zappy-attribution">נוצר באמצעות Zappy</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+  
+  <a href="https://wa.me/[whatsapp_handle]" class="whatsapp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <div data-integration="accessibility:toolbar"></div>
+
+    <script src="/script.js"></script>
+
+    <script id="zappy-mobile-submenu-script">
+    (function() {
+      function initMobileSubmenuToggles() {
+        if (window.innerWidth > 768) {
+          document.querySelectorAll('.mobile-submenu-toggle').forEach(function(btn) { btn.remove(); });
+          document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) { menu.classList.remove('mobile-expanded'); });
+          return;
+        }
+        var items = document.querySelectorAll('.nav-menu li:has(.sub-menu), nav li:has(.sub-menu), .navbar li:has(.sub-menu), #navMenu li:has(.sub-menu)');
+        items.forEach(function(li) {
+          if (li.querySelector('.mobile-submenu-toggle')) return;
+          var submenu = li.querySelector('.sub-menu');
+          var parentLink = li.querySelector(':scope > a');
+          if (!submenu || !parentLink) return;
+          var toggleBtn = document.createElement('button');
+          toggleBtn.className = 'mobile-submenu-toggle';
+          toggleBtn.setAttribute('aria-label', 'Toggle submenu');
+          toggleBtn.setAttribute('type', 'button');
+          parentLink.insertAdjacentElement('afterend', toggleBtn);
+          toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault(); e.stopPropagation();
+            document.querySelectorAll('.sub-menu.mobile-expanded').forEach(function(menu) {
+              if (menu !== submenu) { menu.classList.remove('mobile-expanded'); var t = menu.parentElement.querySelector('.mobile-submenu-toggle'); if(t) t.classList.remove('expanded'); }
+            });
+            submenu.classList.toggle('mobile-expanded');
+            toggleBtn.classList.toggle('expanded');
+          });
+        });
+      }
+      if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', initMobileSubmenuToggles); }
+      else { initMobileSubmenuToggles(); }
+      var resizeTimer; window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(initMobileSubmenuToggles, 250); });
+      // Re-initialize when mobile menu becomes visible (MutationObserver)
+      var observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'attributes') {
+            var target = mutation.target;
+            if (target.classList && (target.classList.contains('active') || target.classList.contains('open'))) {
+              setTimeout(initMobileSubmenuToggles, 100);
+            }
+          }
+        });
+      });
+      setTimeout(function() {
+        document.querySelectorAll('.mobile-menu, .nav-menu, #navMenu, nav').forEach(function(menu) {
+          observer.observe(menu, { attributes: true, attributeFilter: ['class', 'style'] });
+        });
+      }, 500);
+    })();
+    </script>
+
+    <script id="zappy-navbar-scroll-effect">
+    (function(){
+      var nb=document.querySelector('nav.navbar,.navbar:not(.zappy-catalog-menu)');
+      var cm=document.querySelector('.zappy-catalog-menu,#zappy-catalog-menu');
+      if(!nb)return;
+      var fb='rgba(231,224,210,0.85)';
+      var th=60;
+      var rs=getComputedStyle(document.documentElement);
+      var td=rs.getPropertyValue('--text-dark').trim()||'#1a1a1a';
+      var tl=rs.getPropertyValue('--text-light').trim()||'#ffffff';
+      var st=true?td:tl;
+      nb.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease,box-shadow 0.3s ease';
+      if(cm)cm.style.transition='background 0.3s ease,backdrop-filter 0.3s ease,-webkit-backdrop-filter 0.3s ease';
+      var neSel='a,.navbar-brand,.navbar-brand a,.dropdown-toggle,.mobile-toggle,.phone-header-btn,.mobile-hamburger-btn,.mobile-close-btn,.mobile-submenu-toggle,.nav-link';
+      var skipCls=['cart-link','login-link','nav-search-toggle','search-toggle'];
+      function sTC(c,clr){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){var sk=false;if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu')){sk=true;}for(var j=0;j<skipCls.length;j++){if(els[i].classList.contains(skipCls[j])){sk=true;break;}}if(!sk)els[i].style.setProperty('color',clr,'important');}}
+      function cTC(c){var els=c.querySelectorAll(neSel);for(var i=0;i<els.length;i++){if(els[i].closest('.sub-menu')||els[i].closest('.dropdown-menu'))continue;els[i].style.removeProperty('color');}}
+      function applyScrolled(){
+        nb.classList.add('scrolled');
+        if(window.innerWidth>768){
+          nb.style.setProperty('--frosted-text',st);
+          nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('background-color',fb,'important');
+          nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+        }
+        if(cm){cm.classList.add('scrolled');if(window.innerWidth>768){cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}}
+      }
+      function onS(){
+        if(window._zappyNavNoDarkHero) return;
+        if(window.innerWidth<=768){nb.classList.remove('scrolled');cTC(nb);if(cm){cm.classList.remove('scrolled');cTC(cm);}return;}
+        var y=window.scrollY||window.pageYOffset;
+        if(y>th){
+          nb.classList.add('scrolled');nb.style.setProperty('background-color',fb,'important');nb.style.setProperty('background-image','none','important');
+          nb.style.setProperty('--frosted-text',st);nb.style.backdropFilter='blur(12px)';nb.style.webkitBackdropFilter='blur(12px)';nb.style.boxShadow='0 2px 16px rgba(0,0,0,0.12)';
+          sTC(nb,st);
+          if(cm){cm.classList.add('scrolled');cm.style.setProperty('background',fb,'important');cm.style.setProperty('backdrop-filter','blur(12px)','important');cm.style.setProperty('-webkit-backdrop-filter','blur(12px)','important');sTC(cm,st);}
+        }else{
+          nb.classList.remove('scrolled');nb.style.setProperty('background-color','transparent','important');nb.style.removeProperty('background-image');
+          nb.style.removeProperty('--frosted-text');nb.style.backdropFilter='none';nb.style.webkitBackdropFilter='none';nb.style.boxShadow='none';
+          cTC(nb);
+          if(cm){cm.classList.remove('scrolled');cm.style.setProperty('background','transparent','important');cm.style.setProperty('backdrop-filter','none','important');cm.style.setProperty('-webkit-backdrop-filter','none','important');cTC(cm);}
+        }
+      }
+      function sLum(rv,gv,bv){rv/=255;gv/=255;bv/=255;rv=rv<=0.03928?rv/12.92:Math.pow((rv+0.055)/1.055,2.4);gv=gv<=0.03928?gv/12.92:Math.pow((gv+0.055)/1.055,2.4);bv=bv<=0.03928?bv/12.92:Math.pow((bv+0.055)/1.055,2.4);return 0.2126*rv+0.7152*gv+0.0722*bv;}
+      window.addEventListener('scroll',onS,{passive:true});
+      window.addEventListener('resize',onS,{passive:true});
+      onS();
+      var heroEl=document.querySelector('section[class*="hero"],[data-hero-type],main>section:first-child');
+      var hasDH=false;
+      if(heroEl){var hCs=getComputedStyle(heroEl);var hBI=hCs.backgroundImage;if(hBI&&hBI!=='none'){if(hBI.indexOf('url(')!==-1){var hM2=hCs.backgroundColor.match(/\d+/g);if(hM2&&hM2.length>=3){hasDH=sLum(parseInt(hM2[0]),parseInt(hM2[1]),parseInt(hM2[2]))<0.4;}else{hasDH=true;}}else if(hBI.indexOf('gradient')!==-1){var cM=hBI.match(/rgba?\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/g);if(cM&&cM.length>0){var tLm=0;for(var ci=0;ci<cM.length;ci++){var pts=cM[ci].match(/\d+/g);tLm+=sLum(parseInt(pts[0]),parseInt(pts[1]),parseInt(pts[2]));}hasDH=(tLm/cM.length)<0.4;}else{hasDH=true;}}else{hasDH=true;}}else{var hM=hCs.backgroundColor.match(/\d+/g);if(hM&&hM.length>=3){hasDH=sLum(parseInt(hM[0]),parseInt(hM[1]),parseInt(hM[2]))<0.4;}}}
+      if(!hasDH){window.removeEventListener('scroll',onS);window.removeEventListener('resize',onS);applyScrolled();window._zappyNavNoDarkHero=true;}
+    })();
+    </script>
+</body>
+</html>

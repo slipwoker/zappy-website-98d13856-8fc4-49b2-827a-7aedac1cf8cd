@@ -1,0 +1,79 @@
+# שמואל הנדלר יועץ ומלווה משקיעים בחו"ל — Generative Engine Optimization Map
+
+> A real estate investment consulting business specializing in guiding investors through property acquisitions in Greece, particularly Athens. The business focuses on mid-range residential apartments (50-60 sqm) in the accessible investment range of €60K-€80K, positioning itself as a trusted bridge between Israeli investors and the Greek real estate market. The brand likely conveys expertise, reliability, and opportunity in the Mediterranean property scene.
+
+---
+
+## Pages
+
+### בית
+https://example.com
+רוצים להשקיע בנדל&quot;ן באתונה ולהכפיל את ההון שלכם? קבלו ייעוץ השקעות נדל&quot;ן מקצועי עם ליווי אישי מלא לאורך כל הדרך. דירות במחירים נגישים, תשואות גבוהות, תוצאות מוכחות.
+
+### שירותים
+https://example.com/services
+מאיתור הנכס המושלם ועד לחתימת החוזה — שירותי ייעוץ נדל&quot;ן מקיפים שמכסים כל שלב בתהליך. גלו כיצד אנו הופכים השקעה בחו&quot;ל לפשוטה, בטוחה ומשתלמת עבורכם.
+
+### אודות
+https://example.com/about
+שמואל הנדלר הוא הגשר האמין בין משקיעים ישראלים לשוק הנדל&quot;ן היווני. היכירו את המומחה שהוביל עשרות משקיעים להצלחה עם ניסיון, ידע מעמיק ומחויבות אישית לכל לקוח.
+
+### צור קשר
+https://example.com/contact
+מוכנים לחקור הזדמנויות נדל&quot;ן ביוון? צרו קשר עוד היום לייעוץ ראשוני ללא עלות וגלו כיצד תוכלו לרכוש דירה באתונה בטווח תקציב של 60,000–80,000 אירו עם ליווי מקצועי מלא.
+
+## Legal & Policy
+
+### Privacy Policy
+https://example.com/privacy
+Information about how user data is collected, stored, and protected.
+
+### Terms & Conditions
+https://example.com/terms
+Legal terms describing service usage, rights, and policies.
+
+### Accessibility Statement
+https://example.com/accessibility
+Information about WCAG compliance and accessibility features.
+
+---
+
+## How to Contact Us
+
+- (No contact details configured yet.)
+
+### Contact form
+- URL: https://example.com/contact
+- Endpoint: https://example.com/api/email/contact-form
+- Method: POST
+- Content-Type: application/json
+- Fields:
+  - `name` (text, required)
+  - `email` (email, required)
+  - `phone` (tel, required)
+  - `message` (textarea, required)
+  - `privacy_consent` (checkbox, required)
+
+---
+
+# Business Context (for LLM understanding)
+
+## About שמואל הנדלר יועץ ומלווה משקיעים בחו"ל
+A real estate investment consulting business specializing in guiding investors through property acquisitions in Greece, particularly Athens. The business focuses on mid-range residential apartments (50-60 sqm) in the accessible investment range of €60K-€80K, positioning itself as a trusted bridge between Israeli investors and the Greek real estate market. The brand likely conveys expertise, reliability, and opportunity in the Mediterranean property scene.
+
+## Target Audience
+- משקיעים המעוניינים לרכוש נכסים ביוון ובאתונה
+- משקיעים ביוון
+- בעלי הון גבוה
+- משקעי נדל"ן
+
+## Industry
+Real Estate Investment Consulting
+
+---
+
+# Machine-readable feeds
+
+- Sitemap (XML): https://example.com/sitemap.xml
+- Robots: https://example.com/robots.txt
+- Flattened page text (for LLMs): https://example.com/llms-full.txt
